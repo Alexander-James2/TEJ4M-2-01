@@ -15,14 +15,15 @@ from TuringMachine import TuringMachine
 #                            ↓ value to write to Tape
 #                                 ↓ direction to move
 state_machine = {
-    ("init", "0"): ("init", "1", "R"),
+    ("init", "0"): ("init", "0", "R"),
     ("init", "1"): ("init", "0", "R"),
-    ("init", " "): ("final", " ", "N"),
+    ("init", " "): ("init", "1", "R"),
+    ("init", "."): ("final", " ", "N"),
 }
 
 # initial tape
 a_turing_machine = TuringMachine(
-    "010011001 ",
+    " 1011.",
     initial_state="init",
     final_states={"final"},
     transition_function=state_machine,
@@ -40,3 +41,6 @@ print("\nResult of the Turing machine calculation:")
 print("Original tape: " + original_tape)
 print("Final tape   : " + a_turing_machine.get_tape())
 print("\nDone.")
+
+
+
